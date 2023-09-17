@@ -1,0 +1,27 @@
+.data
+a: .byte 54
+b: .byte 45
+result: .space 4   # Espaço para armazenar o resultado inteiro
+
+.text
+.globl main
+
+main:
+    # Carrega o valor de 'a' em $t0
+    lb $t0, a
+
+    # Carrega o valor de 'b' em $t1
+    lb $t1, b
+
+    # Soma os valores de 'a' e 'b' e armazena o resultado em $t2
+    add $t2, $t0, $t1
+
+    # Converte o resultado inteiro em uma string para impressão
+    li $v0, 4
+    la $a0, result
+    move $a1, $t2
+    syscall
+
+    # Termina o programa
+    li $v0, 10
+    syscall

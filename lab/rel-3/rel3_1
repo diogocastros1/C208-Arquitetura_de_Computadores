@@ -1,0 +1,33 @@
+.text
+# Questão 1
+# a-) 2 + 5 
+li $s1, 2
+li $s2, 5
+add $t1, $s1, $s2
+# b-) 89 + 20
+li $s1, 89
+li $s2, 20
+add $t2, $s1, $s2
+# c-) -80 + 1234
+li $s1, -80
+li $s2, 1234
+add $t3, $s1, $s2
+# d-) 70 - 24
+li $s1, 70
+li $s2, -24
+add $t4, $s1, $s2
+# d-) 20 - 150
+li $s1, 20
+li $s2, -150
+add $t5, $s1, $s2
+
+# Questão 2
+li $v0, 5
+syscall
+addi $t6, $v0, 30
+move $a0, $t6
+li $v0, 1
+syscall
+
+
+
