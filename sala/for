@@ -1,0 +1,16 @@
+.text
+# for(x = 1; x<10; x++)
+#		y = y + 1
+li $t0, 1
+li $t1, 5
+
+for: 
+	blt	$t1, 10, sum
+	j exit
+
+sum: 
+	addi $t1, $t1, 1
+	addi $t2, $t2, 1
+	j for
+	
+exit: 

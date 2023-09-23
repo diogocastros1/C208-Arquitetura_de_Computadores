@@ -1,0 +1,16 @@
+.text
+# x = $t1
+#	y = $t2
+# while (x<10)
+#		y = y + 1
+#		x = x + 1
+
+li $t1, 2
+li $t2, 5
+
+while:
+	bge $t1, 10, exit # if $t1 >= 10: exit, do contrario incrementos de $t1 e $
+		addi $t1, 1
+		addi $t2, 1
+		j while
+exit:  
