@@ -1,0 +1,66 @@
+.text
+#1 Dados os numeros abaixo:
+li $s1, 10
+li $s2, 25
+li $s3, 43
+li $s4, 89
+
+#Deslocamento a direita em 8 bits para cada um deles
+srl $s1, $s1, 8
+srl $s2, $s2, 8
+srl $s3, $s3, 8
+srl $s4, $s4, 8
+
+#Deslocamento a esquerda em 4 bits para cada um deles
+sll $s1, $s1, 4
+sll $s2, $s2, 4
+sll $s3, $s3, 4
+sll $s4, $s4, 4
+
+#2 Aplicar a logica AND nos numeros abaixo:
+#324 AND 100
+li $t1, 324
+li $t2, 100
+and $t5, $t1, $t2
+
+#2018 AND 1970
+li $t1, 2018
+li $t2, 1970
+and $t6, $t1, $t2
+
+#33 AND 66
+li $t1, 33
+li $t2, 66
+and $t7, $t1, $t2
+
+#3 Aplicar a logica OR nos numeros abaixo:
+#324 OR 100
+li $t1, 324
+li $t2, 100
+or $s1, $t1, $t2
+
+#2018 OR 1970
+li $t1, 2018
+li $t2, 1970
+or $s2, $t1, $t2
+
+#33 OR 66
+li $t1, 33
+li $t2, 66
+or $s3, $t1, $t2
+
+#4 Aplicar a logica NOR nos numeros abaixo:
+#324 NOR 100
+li $t1, 324
+li $t2, 100
+nor $s4, $t1, $t2
+
+#2018 NOR 1970
+li $t1, 2018
+li $t2, 1970
+nor $s5, $t1, $t2
+
+#33 NOR 66
+li $t1, 66
+li $t2, 33
+nor $s6, $t1, $t2
