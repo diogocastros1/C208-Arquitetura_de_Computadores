@@ -1,7 +1,8 @@
+# QuestÃ£o 3
 .data
 a: .byte 54
 b: .byte 45
-result: .space 4   # Espaço para armazenar o resultado inteiro
+result: .space 4   # EspaÃ§o para armazenar o resultado inteiro
 
 .text
 .globl main
@@ -16,7 +17,7 @@ main:
     # Soma os valores de 'a' e 'b' e armazena o resultado em $t2
     add $t2, $t0, $t1
 
-    # Converte o resultado inteiro em uma string para impressão
+    # Converte o resultado inteiro em uma string para impressÃ£o
     li $v0, 4
     la $a0, result
     move $a1, $t2
