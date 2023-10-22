@@ -1,0 +1,61 @@
+.data
+	f1: .asciiz "Entre com o primeiro numero:"
+	f2: .asciiz "Entre com o segundo numero:"
+	f3: .asciiz "Entre com o terceiro numero:"
+	
+	f_greater: .asciiz "Maior que 100."
+	f_equal: .asciiz "Igual que 100."
+	f_less: .asciiz "Menor que 100."
+
+.text
+# Leitura do priemiro
+	la $a0, f1
+	li $v0,4
+	syscall
+	li $v0,5
+	syscall
+	add $t1, $v0, $0
+# Leitura do segundo
+	la $a0, f2
+	li $v0, 4
+	syscall
+	li $v0,$0,5
+	syscall
+	add $t2, $v0, $0	
+# Leitura do terceiro
+	la $a0, f3
+	li $v0, 4
+	syscall
+	li $v0, 5
+	syscall
+	add $t3, $v0, $0
+	
+#	---------PROCESSAMENTO---------
+	add $t3, $t3, $t1
+	add $t3, $t3, $t2
+	
+	bgt $t3, 100, GREATER
+	blt $t3, 100, LESS
+		la $a0, f_equal
+		li $v0, 4
+		syscall
+		j EXIT	
+	
+	GREATER:
+		la $a0, f_greater
+		li $v0, 4
+		syscall
+		j EXIT		
+	LESS:
+		la $a0, f_equal
+		li $v0, 4
+		syscall
+		j EXIT		
+	EXIT:
+		li $v0,10
+		syscall
+	
+	
+	
+	
+	
