@@ -1,3 +1,4 @@
-addiu $22, $0 0xcafe
-addiu $6, $0, 0xb0b0
-addiu $13, $22, $6
+addiu $1, $0, 0x0100
+addiu $2, $0, 0xdad0
+sw $2, 10($1)
+lw $3, 10($1)

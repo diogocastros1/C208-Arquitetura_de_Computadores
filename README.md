@@ -22,3 +22,5 @@ Dedicado aos exercícios e anotações de arquitetura de computadores.
 |LOAD       | 0      |
 |MEM_TO_REG | 0      |
 
+
+---
