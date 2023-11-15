@@ -1,4 +1,4 @@
-# C208-Arquitetura_de_Computadores
+# C208 A - L4 | Arquitetura de Computadores
 Dedicado aos exercícios e anotações de arquitetura de computadores.
 
 ---
@@ -33,3 +33,36 @@ Dedicado aos exercícios e anotações de arquitetura de computadores.
 5. Write Back (Gravação no registrador destino)
 
 ![Etapas da excução](/assets/images/img1.jpeg)
+
+>Exercicio de Exemplo
+>Como ficaria no pipeline a seguinte sequência de instruções: 
+>1. lw $t0, 8($t1)
+>2. add $a0, $t0,$t5
+>3. sw $a0,12($t0)
+>4. beq $t0,$a0, Label
+> 
+
+|         |2ns      |2ns      |2ns      |2ns      |2ns      |2ns      |2ns      |
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|LW       |Busca    |///REG   |ULA      |MEM      |///REG   |         |         |
+|ADD      |         |Busca    |///REG   |ULA      |REG///   |         |         |
+|SW       |         |         |Busca    |REG      |ULA      |MEM      |         |
+|BEQ      |         |         |         |Busca    |//////   |///REG   |ULA      |
+
+- Sem pipeline = LW(8ns)+ADD(6ns)+SW(7ns)+BEQ(5ns) = 26ns
+- Com pipeline = 14ns
+---
+>Exemplo 2:
+>1. li $s0, 0x61
+>2. li $s7, 0x1001000C
+>3. sb $s0, 0($s7)
+>4. add $t2, $0, $s7
+>5. sub $t3, $0, $s7
+
+|         |2ns      |2ns      |2ns      |2ns      |2ns      |2ns      |2ns      |2ns      |
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|LI       |Busca    |///REG   |ULA      |MEM      |///REG   |         |         |         |
+|LI       |         |Busca    |///REG   |ULA      |MEM      |///REG   |         |         |
+|SB       |         |         |Busca    |///REG   |ULA      |MEM      |         |         |
+|ADD      |         |         |         |Busca    |REG///   |ULA      |REG      |         |
+|SUB      |         |         |         |         |Busca    |REG///   |ULA      |REG      |
