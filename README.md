@@ -3,7 +3,7 @@ Dedicado aos exercícios e anotações de arquitetura de computadores.
 
 ---
 
-### Etapas do processador
+## Etapas do processador
 1. Busca (Fetch)
 2. Decodificação
 3. Acesso aos registradores
@@ -24,3 +24,12 @@ Dedicado aos exercícios e anotações de arquitetura de computadores.
 
 
 ---
+
+## Estágios de execução de uma instrução
+1. Busca
+2. Acesso aos registradores (Endereçamento)
+3. Execução da instrução (ULA)
+4. Acesso à mem. (Load ou Store)
+5. Write Back (Gravação no registrador destino)
+
+![Etapas da excução](/assets/images/img1.jpeg)
