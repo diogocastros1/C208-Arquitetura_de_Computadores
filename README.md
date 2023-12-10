@@ -5,7 +5,7 @@ Dedicado aos exercícios e anotações de arquitetura de computadores.
 ## Resumo do assembly MIPS
 
 Para receber um numero inteiro do usuario, efetuar uma soma com um numero inteiro e printar o resultado no final, podemos utilizar a estrutura abaixo:
-~~~assembly 
+~~~mips 
 # 1º criar variavel e frase para user
 .data 
   A: .word 0 # variavel A com valor = 0
