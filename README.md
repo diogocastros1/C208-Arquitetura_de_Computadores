@@ -4,8 +4,16 @@ Dedicado aos exercícios e anotações de arquitetura de computadores.
 ---
 ## Resumo do assembly MIPS
 
+### Tipos de instruções
+| | | | | | | |
+|:------:|:-----:|:-----:|:-----:|:-----:|:-----:|--------:|
+| OP | rs | rt | rd | sa | funct | Tipo R|
+| OP | rs | rt | ///// | ///// | ///// | Tipo I|
+| OP | ///// | ///// | ///// | ///// | ///// | Tipo J|
+| 31~26 | 25~21 | 20~16 | 15~11 | 10~6 | 5-0 | |
+
 Para receber um numero inteiro do usuario, efetuar uma soma com um numero inteiro e printar o resultado no final, podemos utilizar a estrutura abaixo:
-~~~mips 
+~~~assembly 
 # 1º criar variavel e frase para user
 .data 
   A: .word 0 # variavel A com valor = 0
