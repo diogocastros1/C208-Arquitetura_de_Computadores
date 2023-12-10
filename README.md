@@ -2,6 +2,17 @@
 Dedicado aos exercícios e anotações de arquitetura de computadores.
 
 ---
+## Resumo do assembly MIPS
+
+Para receber um numero inteiro do usuario, efetuar uma operação e printar a info no final:
+~~~assembly 
+# 1º criar variavel e frase para user
+.data 
+  A: .word 0 # variavel A com valor = 0
+  frase_A: .asciiz "Alguma frase aqui"
+~~~
+
+---
 
 ## Etapas do processador
 1. Busca (Fetch)
@@ -66,3 +77,4 @@ Dedicado aos exercícios e anotações de arquitetura de computadores.
 |SB       |         |         |Busca    |///REG   |ULA      |MEM      |         |         |
 |ADD      |         |         |         |Busca    |REG///   |ULA      |REG      |         |
 |SUB      |         |         |         |         |Busca    |REG///   |ULA      |REG      |
+
