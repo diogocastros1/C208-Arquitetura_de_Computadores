@@ -2,15 +2,68 @@
 Dedicado aos exercícios e anotações de arquitetura de computadores.
 
 ---
+## Arquitetura e organização
+
+Etapas do processo de desenvolvimento:
+
+**1. Prog. Fonte**
+**2. Montador**
+3. Prog. Objeto
+4. Link-Edição (Ligação)
+
 ## Resumo do assembly MIPS
 
 ### Tipos de instruções
-| | | | | | | |
+| | | | | | | Tipo |
 |:------:|:-----:|:-----:|:-----:|:-----:|:-----:|--------:|
-| OP | rs | rt | rd | sa | funct | Tipo R|
-| OP | rs | rt | ///// | ///// | ///// | Tipo I|
-| OP | ///// | ///// | ///// | ///// | ///// | Tipo J|
+| OP | rs | rt | rd | sa | funct | R |
+| OP | rs | rt | ///// | ///// | ////// | I |
+| OP | ///// | ///// | ///// | ///// | ////// | J |
 | 31~26 | 25~21 | 20~16 | 15~11 | 10~6 | 5-0 | |
+
+/ -> 1 bit, // -> 2 bits, ...
+
+![Referência](/assets/images/img2.png)
+
+#### Tipo R
+Campos:
+- op → código da operação (opcode)
+- rs → endereço do primeiro registrador de origem
+- rt → endereço do segundo registrador de origem
+- rd → endereço do registrador destino
+- shamt → quantidade de bits a ser deslocado 
+- funct → função específica a ser realizada
+
+| OP | rs | rt | rd | sa | funct |
+|:------:|:-----:|:-----:|:-----:|:-----:|:------:|
+| 000000 | 01001 | 01000 | 01010 | 00000 | 100000 |
+| 0x0 | 9 | 8 | 10 | shamt | 0x20 |
+
+#### Tipo I
+Campos:
+- op → código da operação (opcode)
+- rs → número do registrador base a ser operado com o valor constante
+- rt → número do registrador de destino ou operando
+- constante → –2^15 a +2^15–1
+- endereço → –2^15 a +2^15–1
+
+Neste exemplo estamos utilizando uma constante.
+
+| OP | rs | rt | constante ou endereço |
+|:------:|:-----:|:-----:|:-----:|
+| 000000 | 01001 | 01000 | 00000 00001 100100 |
+| 0x0 | 9 | 8 | 100 |
+
+#### Tipo J
+Campos:
+- op → código da operação (opcode)
+- endereço → endereço destino
+
+Neste exemplo
+| OP | rs | rt | constante ou endereço |
+|:------:|:-----:|:-----:|:-----:|
+| 000010 | 00000 00000 00000 00011 110101 |
+| 0x2 | 9 | 8 | 245 |
 
 Para receber um numero inteiro do usuario, efetuar uma soma com um numero inteiro e printar o resultado no final, podemos utilizar a estrutura abaixo:
 ~~~assembly 
@@ -42,6 +95,22 @@ Para receber um numero inteiro do usuario, efetuar uma soma com um numero inteir
   syscall
 ~~~
 
+Exemplo de código com beg (branch if greatar or equal):
+~~~assembly
+.text
+  li $t1, 8
+  li $t2, 5
+
+  # if ($t1 > 10): maior, else: $t2 - 1
+  bge $t1, 10, maior 
+  addi $t2, $t2, -1
+  j exit # pula para exit e nao entra no maior
+
+  maior: 
+    addi $t2, $t2, 1
+  exit: 
+~~~
+
 ---
 
 ## Etapas do processador
@@ -53,8 +122,8 @@ Para receber um numero inteiro do usuario, efetuar uma soma com um numero inteir
 6. Write Back
 
 ---
-
-|ADDIU      |        |
+### ADDIU
+|      |        |
 |:---------:|:------:|
 |REG_DEST   | 1      |
 |ALU_SRC    | 1      |
