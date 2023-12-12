@@ -6,16 +6,21 @@ Dedicado aos exercícios e anotações de arquitetura de computadores.
 
 Etapas do processo de desenvolvimento:
 
-**1. Prog. Fonte**
-**2. Montador**
-3. Prog. Objeto
-4. Link-Edição (Ligação)
+1. **Prog. Fonte** - Pode ser um programa em assembly ou em uma linguagem de alto nível.
+2. **Compilador** - Utilizado quando o *Prog. Fonte* é desenvolvido em linguagem de alto nivel, este traduz o código para assembly.
+3. **Montador (Programa Tradutor)** - utilizado para traduzir um código assembly para o programa objeto. No contexto MIPS, este seria um conjunto de instruções que poderia ser executado diretamente por ele.
+4. **Prog. Objeto** - código que a maquina entende.
+5. **Link-Edição (Ligação)** - processo por resolver as referências a bibliotecas e outros módulos de programas, para que seja possivel criar um executavel final.
+
+**Obs.:** 
+1. O interpretador faz a tradução de um comando e o executa sem gerar o programa objeto.
+2. Compilação cruzada é utilizada quando se deseja buildar um programa que será utilizado em um SO diferente.
 
 ## Resumo do assembly MIPS
 
 ### Tipos de instruções
 | | | | | | | Tipo |
-|:------:|:-----:|:-----:|:-----:|:-----:|:-----:|--------:|
+|:------:|:-----:|:-----:|:-----:|:-----:|:-----:|--------:|s
 | OP | rs | rt | rd | sa | funct | R |
 | OP | rs | rt | ///// | ///// | ////// | I |
 | OP | ///// | ///// | ///// | ///// | ////// | J |
@@ -113,7 +118,21 @@ Exemplo de código com beg (branch if greatar or equal):
 
 ---
 
-## Etapas do processador
+## ULA ou ALU (Unidade Lógica Aritimética)
+**Reponsabilidades** - 
+
+#### Controle da ULA (ALU Control)
+| Entrada | Função |
+| :------: | :------: |
+| 000 | AND |
+| 001 | OR |
+| 010 | SOMA |
+| 110 | SUBT |
+| 111 | set less than |
+
+
+
+### Etapas do processador
 1. Busca (Fetch)
 2. Decodificação
 3. Acesso aos registradores
@@ -122,7 +141,7 @@ Exemplo de código com beg (branch if greatar or equal):
 6. Write Back
 
 ---
-### ADDIU
+#### ADDIU
 |      |        |
 |:---------:|:------:|
 |REG_DEST   | 1      |
@@ -135,7 +154,7 @@ Exemplo de código com beg (branch if greatar or equal):
 
 ---
 
-## Estágios de execução de uma instrução
+### Estágios de execução de uma instrução
 1. Busca
 2. Acesso aos registradores (Endereçamento)
 3. Execução da instrução (ULA)
